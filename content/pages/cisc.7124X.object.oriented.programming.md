@@ -4,7 +4,7 @@ date: Last Modified
 permalink: /object-oriented-programming/index.html
 eleventyNavigation:
   key: 7124X
-  order: 0
+  order: 4
   title: CISC 7124X Object Oriented Programming
 ---
 
