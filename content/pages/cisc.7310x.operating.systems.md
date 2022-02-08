@@ -4,7 +4,7 @@ date: Last Modified
 permalink: /operating-systems/index.html
 eleventyNavigation:
   key: 7310X
-  order: 0
+  order: 5
   title: CISC 7310X Operating Systems
 ---
 
