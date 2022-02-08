@@ -10,10 +10,21 @@ eleventyNavigation:
 
 ### Week 0
 
-[Lecture Recording]()
+[Lecture Recording (Part 1)]()
+[Lecture Recording (Part 2)]()
 [Homework | Download]()
 [Homework | Completed]()
 [Youtube Video Explainer Video]()
+
+
+### Week 1
+
+[Lecture Recording (Part 1)]()
+[Lecture Recording (Part 2)]()
+[Homework | Download]()
+[Homework | Completed]()
+[Youtube Video Explainer Video]()
+
 
 ***Review***
 

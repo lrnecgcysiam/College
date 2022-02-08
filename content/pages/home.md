@@ -1,10 +1,14 @@
 ---
-title: Hello, world.
+title: Welcome to my page.
 date: Last Modified 
 permalink: /
 eleventyNavigation:
-  key: Hello 
+  key: Welcome
   order: 0
-  title: Hello, world.
+  title: Welcome to my Page.
 ---
+### Konnichiwa!
 
+Thanks for visiting my page I am trying to explore new ways to collaborate with other students in the classes I have listed this semester. This application is built from a static site generator called [Spacebook](https://spacebook.app) it is built using just HTML,CSS, NodeJS and Markdown. It is very lightweight and helps to share notes, codes and some information about your self while learning about how the Internet work. It is totally free to get started and if enough people ask I can create a tutorial to help anyone get started.
+
+### 

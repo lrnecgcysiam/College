@@ -1,17 +1,26 @@
 ---
-title: CISC 7512X Local Area Networks
+title: CISC 7512X Advanced Databases 2
 date: Last Modified 
 permalink: /advanced-databases/index.html
 eleventyNavigation:
   key: 7512X
   order: 1
-  title: CISC 7512X Local Area Networks
+  title: CISC 7512X Advanced Databases 2
 ---
 
 
-### Week 0
+## Week 0
 
-[Lecture Recording]()
+[Lecture Recording (Part 1) ](https://youtu.be/BL4XaR785_s) 
+[Lecture Recording (Part 2) ](https://youtu.be/BL4XaR785_s) 
+[Homework | Download]()
+[Homework | Completed]()
+[Youtube Video Explainer Video]()
+
+## Week 1
+
+[Lecture Recording (Part 1)]()
+[Lecture Recording (Part 2)]()
 [Homework | Download]()
 [Homework | Completed]()
 [Youtube Video Explainer Video]()
