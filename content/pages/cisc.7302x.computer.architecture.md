@@ -8,10 +8,13 @@ eleventyNavigation:
   title: CISC 7302X Computer-Architecture
 ---
 
+[Dropbox Link available here](https://www.dropbox.com/sh/h2qni43p54zmnds/AAB-s1gU1OhFqLLQBZ60EX1Ka?dl=0)
+
+
 ### Week 0
 
-[Lecture Recording (Part 1)]()
-[Lecture Recording (Part 2)]()
+[Lecture Recording (Part 1)](https://youtu.be/aaOzmm1vuVo)]
+<!-- [Lecture Recording (Part 2)]() -->
 [Homework | Download]()
 [Homework | Completed]()
 [Youtube Video Explainer Video]()
@@ -19,8 +22,8 @@ eleventyNavigation:
 
 ### Week 1
 
-[Lecture Recording (Part 1)]()
-[Lecture Recording (Part 2)]()
+[Lecture Recording (Part 1)](https://youtu.be/0coMmiFjxjQ)
+<!-- [Lecture Recording (Part 2)]() -->
 [Homework | Download]()
 [Homework | Completed]()
 [Youtube Video Explainer Video]()
