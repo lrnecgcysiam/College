@@ -10,9 +10,9 @@ eleventyNavigation:
 
 ### Week 0
 
-[Lecture Recording]()
-[Homework | Download]()
-[Homework | Completed]()
+[Lecture Recording](https://youtu.be/MRA73wR9hgI)
+[Homework | Download](http://www.sci.brooklyn.cuny.edu/~zhou/teaching/cis7124/hw1.pdf)
+[Homework | Completed]( https://www.dropbox.com/sh/nqj1tnkdbgelxhb/AABB_NsT2RN0_IikjI_ejkBMa?dl=0)
 [Youtube Video Explainer Video]()
 
 ***Review***
@@ -29,3 +29,9 @@ For deployent of the website I am currently using Netlify. Netlify is your go to
 - Chris.samuel68@bcmail.cuny.edu 
 - encrpytable@pm.me (For those who like anonymity please use a protonmail email so you can send encrypted emails ) 
 
+### Week 1
+
+[Lecture Recording](https://youtu.be/MRA73wR9hgI)
+[Homework | Download]()
+[Homework | Completed]( https://www.dropbox.com/sh/nqj1tnkdbgelxhb/AABB_NsT2RN0_IikjI_ejkBMa?dl=0)
+[Youtube Video Explainer Video]()

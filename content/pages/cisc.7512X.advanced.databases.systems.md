@@ -22,6 +22,24 @@ eleventyNavigation:
 [Lecture Recording (Part 1)]()
 [Lecture Recording (Part 2)]()
 [Homework | Download]()
+
+ customer may have several accounts, and each account may participate in many transactions. Each transaction will have at least two records, one deducting amount from an account, and one adding amount to an account (for a single transactionid, the sum of amounts will equal zero).
+Using SQL, answer these questions (write a SQL query that answers these questions):
+
+    What is the balance of accountid=42?
+    What was the transaction amount of transactionid=42?
+    Which transactionids do not sum up to zero (are invalid)?
+    List of customers without accounts?
+    What is the balance (total across all accounts) for customerid=42?
+    What is the total balance of all customers living in zip code 10001?
+    Which zip code has the highest balance?
+    List the top 1% of customers (ordered by total balance).
+    Using balances for previous two months, predict what the balances will be next month. (tip: find slope of a line; x-axis is days, y-axis is balance. 2 previous months means you have 2 points, finding slope is easy. Use slope to predict where next month's balance will be.)
+    List top 10 fastest growing accounts (using previous 2 months). (tip: same as above, fastest growing means steepest slope).
+    Write a query to add 0.01% to each savings account (note that the money has to be accounted for).
+    For each account, what was the closing balance on December 31, 2016?
+    What percentage of bank's money is held by people in the tri-state area today? (NY, NJ, CT)
+
 [Homework | Completed]()
 [Youtube Video Explainer Video]()
 
