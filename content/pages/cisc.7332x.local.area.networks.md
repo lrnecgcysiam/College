@@ -30,3 +30,11 @@ For deployent of the website I am currently using Netlify. Netlify is your go to
 - Chris.samuel68@bcmail.cuny.edu 
 - encrpytable@pm.me (For those who like anonymity please use a protonmail email so you can send encrypted emails ) 
 
+### Week 1 
+
+No Class. (Conversion Day)
+
+
+### Week 2 
+[Lecture Recording](https://youtu.be/xOZT9l1OFII)
+[Homework | Download](http://theparticle.com/cs/bc/net/homeworks.html)
