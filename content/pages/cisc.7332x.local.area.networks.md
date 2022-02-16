@@ -12,9 +12,9 @@ eleventyNavigation:
 ### Week 0
 
 [Lecture Recording](https://youtu.be/FhQ51oToZgI)
-[Homework | Download](http://theparticle.com/cs/bc/dbsys/homeworks.html)
-[Homework | Completed]()
-[Youtube Video Explainer Video]()
+[Homework | Download](http://theparticle.com/cs/bc/net/homeworks.html)
+<!-- [Homework | Completed]() -->
+<!-- [Youtube Video Explainer Video]() -->
 
 ***Review***
 
