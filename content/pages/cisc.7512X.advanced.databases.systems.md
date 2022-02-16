@@ -19,8 +19,8 @@ eleventyNavigation:
 
 ## Week 1
 
-[Lecture Recording (Part 1)]()
-[Lecture Recording (Part 2)]()
+[Lecture Recording (Part 1)](https://youtu.be/djY42rDKM-M)
+[Lecture Recording (Part 2)](https://youtu.be/aTw8r6ZL89g)
 [Homework | Download]()
 
  customer may have several accounts, and each account may participate in many transactions. Each transaction will have at least two records, one deducting amount from an account, and one adding amount to an account (for a single transactionid, the sum of amounts will equal zero).
