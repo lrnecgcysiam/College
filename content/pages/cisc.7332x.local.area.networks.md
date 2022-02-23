@@ -38,3 +38,10 @@ No Class. (Conversion Day)
 ### Week 2 
 [Lecture Recording](https://youtu.be/xOZT9l1OFII)
 [Homework | Download](http://theparticle.com/cs/bc/net/homeworks.html)
+[Homework (Completed) NodeJS](https://github.com/lrnecgcysiam/College/blob/main/code/CISC7332X/week1/wget.replicant.nodejs.js)
+
+I wrote this using [NodeJS](https://nodejs.org/en/download/). NodeJS is a library that uses C++ under the hood but Javascript to drive the engine. It is available in Linux, MAC and WINDOWS. 
+
+### Week 3
+[Lecture Recording](https://youtu.be/COHRcv7M0Yg)
+[Homework | Download](http://theparticle.com/cs/bc/net/homeworks.html)
