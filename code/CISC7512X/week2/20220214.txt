@@ -1,0 +1,288 @@
+
+recap 
+
+SQL
+
+DDL
+
+create table ...
+drop table ...
+
+DML
+
+CRUD operations, 
+insert/update/select/delete
+
+"select".
+
+CTAS: create table blah as select .... from ....
+
+select f1,f2,f3, --simple projection
+       f1+f3*4 as f7, --some calculation
+       substr(f3,1,1) --calling a function
+from tbl1 a
+  inner join tbl2 b 
+  on a.blahid = b.blahid
+  inner join tbl3 c
+  using( blahid )
+  left outer join tbl4 d
+  on a.blahid = d.blahid
+where 
+  d.blahid is null
+;
+
+select f1,f2,sum(f4) s, avg(f4) a, stddev(f4) sd
+from tbl1
+group by f1,f2
+
+
+---find count of customers by state, ignore (do not return) states with less
+--- than 10000 customers.
+
+with blah as (
+ select state,count(*) cnt
+ from customer
+ group by state
+)
+select *
+from blah where cnt>=10000
+
+
+ select state,count(*) cnt
+ from customer
+ group by state
+ having count(*)>=10000
+
+
+CTE: (common table expressions)
+
+with stats as (
+  select f1,f2,sum(f4) s, avg(f4) a, stddev(f4) sd
+  from tbl1
+  group by f1,f2
+)
+select * 
+from stats
+where f4 >= a+4*sd
+
+
+
+
+
+CASE STATEMENTS
+
+--what fraction of customers live in NY?
+
+select sum(case when state='NY' then 1.0 else 0.0 end)/sum(1.0) 
+from customer;
+
+--we have sum(...) but no product(...)
+
+select  exp( sum(log(x)) )   --if we want a product instead of sum.
+from something.
+
+
+---find the last timestamp within each minute
+select f1,f2,max(tim) maxtim
+from whatever
+group by f1,f2, floor(tim/100) --assume tim/100 removes seconds
+
+
+---timestamps:
+interally: as integer of seconds since epoch. 32, these run out in 2038.
+ -- epoch is new year 1970.
+ -- https://en.wikipedia.org/wiki/Year_2038_problem
+currently it's 64bit integer, and no 2038 problem. BUT, no sub-seconds.
+
+milliseconds since epoch (midnight 1970).  .999 subsecon
+microseconds since epoch (oracle?).   .999999   subsecond
+nanoseconds since epoch .999999999   subsecond
+
+right now it's 6:43pm: can represent as "number"
+20220214T184344.999999999
+20220214 184344.999999999
+
+2022-02-14 18:43:44.999999999
+
+20220214184344.999999999   <-- workaround
+184344.999999999 
+184344.999999
+184344.999 
+184344
+
+use a bigint, nanoseconds since epoch <-- faster, better (no timezone).
+
+2352352352345235252 / 1000000000 
+2352352352 <-- unix timestamp     remainder: 345235252  <-- nanoseconds
+
+------------------------------------------------------------------------
+-- windowing functions ---
+
+customer(customerid,username,fname,lname,street1,street2,city,state,zip)
+account(accountid,customerid,description,)
+transaction(transactionid,trantimestamp,accountid,amount)
+
+--current balance by account.
+select accntid, sum(amnt) 
+from transaction
+group by accntid
+
+--daily balance?
+select cast(tim as date), accntid, sum(amnt) over (partition by accntid, cast(tim as date) order by tim rows between unbounded preceding and current row) bal
+from transaction
+
+
+id, tim, v
+r1, t1,  1
+r2, t2,  1
+r3. t3,  1
+r4, t4,  1
+r5, t5,  1
+
+sum(v) over (order by tim rows between 1 preceding and current row) 
+
+id, tim, v
+r1, t1,  1,   1
+r2, t2,  1,   2,
+r3. t3,  1,   2,
+r4, t4,  1,   2
+r5, t5,  1,   2
+
+
+sum(v) over (order by tim rows between unbounded preceding and unbounded following) 
+
+id, tim, v
+r1, t1,  1,   5
+r2, t2,  1,   5,
+r3. t3,  1,   5,
+r4, t4,  1,   5
+r5, t5,  1,   5
+
+
+
+sum(v) over (order by tim rows between current row and unbounded following) 
+
+id, tim, v
+r1, t1,  1,   5
+r2, t2,  1,   4,
+r3. t3,  1,   3,
+r4, t4,  1,   2
+r5, t5,  1,   1
+
+
+sum(v) over (order by tim rows between 2 preceding and 2 following) 
+
+id, tim, v
+r1, t1,  1,   3
+r2, t2,  1,   4,
+r3. t3,  1,   5,
+r4, t4,  1,   4
+r5, t5,  1,   3,
+
+
+---calculate 20 minute moving average.
+---2nd step, pick out outliers. (>2sd).
+
+https://en.wikipedia.org/wiki/Bollinger_Bands
+
+---calculate 20 day moving average, pick out outliers.
+with stats as (
+ select tdate,symbol,
+  avg(cprice) over (partition by symbol order by tdate rows between 20 preceding and current row) avg20,
+  stddev(cprice) over (partition by symbol order by tdate rows between 20  preceding and current row) sd20
+ from cts
+)
+select *
+from stats
+where cprice >= avg20+2*sd20 or 
+  cprice <= avg20-2*sd20
+;
+
+
+--find days when daily balance changed by more than 10%, 
+--ignore accounts less than $1m.
+
+
+--step 1: find daily balances.
+--step 2: find previous balane for every day.
+--step 3: calculate percentage
+--step 4: filter.
+
+with dailybalances as (
+  select cast(tim as date) dt, accntid, sum(amnt) over (partition by accntid, cast(tim as date) order by tim rows between unbounded preceding and current row) bal
+ from transaction
+),
+prevbal as (
+  select a.*,
+     lag(bal) over (partition by accntid order by dt) prev_bal
+  from dailybalances
+)
+.... do the math and apply filter... 
+
+
+last_value/first_value
+lag/lead
+sum/min/max/avg/stddev
+row_number/rank/dense_rank
+
+v:          1 1 1 2 2 3 3 3 4  4  4  4  4  5  5  6  6  6
+
+row_number: 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18
+(row_number increments on every value)
+rank:       1 1 1 4 4 6 6 6 9  9  9  9  9 14 14 16 16 16 
+(rank does not increment if value is same as previous one)
+dense_rank: 1 1 1 2 2 3 3 3 4  4  4  4  4 5  5  6  6  6
+(dense_rank increments when rank changes).
+
+row_number() over (order by v)
+
+assume we have: (same as last class).
+customer
+product
+purchase 
+purchase_detail 
+
+---for every purchase, compare  price to the very first purchase.
+
+--one way: select first purchase, the join.
+-- how to find first purcahse: one with minimum timestamp.
+
+select custid, b.prodid, b.price, 
+   first_value(b.price) over (partition by a.custid order by a.tim) first_price
+from purchase a
+  inner join purchase_detail b
+  on a.purchid=b.purchid
+
+--the ugly way to find the first record.
+with blah as (
+  select purchid, min(tim) mintim --get min timestamp
+  from purchase
+  group by purchid
+)
+select *  --pickup the record with the first timestamp.
+from purchase a
+  inner join blah b
+  on a.purchid=b.purchid and a.tim=b.mintim  
+
+===last_value is similar to first_value, 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

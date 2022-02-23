@@ -1,0 +1,388 @@
+
+last week recap
+
+DDL: 
+create table 
+drop table
+
+CTAS (create table as): 
+
+  create table blah as 
+    select ....
+    from somewhere;
+
+CRUD operations:
+
+create: "create" record in database, insert
+   
+   insert into customer(cid, name) values (1, 'john');
+
+   NOTE: don't use on large amounts of data: 
+     use database data loading tools, such as: sqlldr (oracle)
+     or 'copy' command in postgres, etc.
+
+retrieve: select
+
+   select * from customer where cid=1;
+
+   NOTE: that's 95% of what folks code. 
+     especially in combination with CTAS. 
+
+update: update
+ 
+   update customer set email='john@yahoo.com' where cid=1;
+
+   NOTE: don't use. loses old value of record.
+
+   similarly: big no-no, regarding records management.
+
+delete: delete
+
+   delete from customer where cid=1;
+
+   NOTE: don't use, lose entire record, migth be subject to 
+        record retention, etc.
+
+   (also, you don't know what they'll be useful for later, so... best to keep). 
+
+
+projection: 
+
+select fname, lname, concat(substr(fname,1,1),substr(lname,1,1)) initials
+from customer;
+
+select: filter records.
+
+select ... from ... where condition;  -- <-- this condition is the filter.
+
+union, intersection
+
+"union all" (combine records from two sources)
+
+except: 
+
+-- get list of customers who are not employees.
+
+select fname,lname,dob from customer
+except 
+select fname,lname,dob from employee
+
+
+select * from dataset1 except select * from dataset2; --if identical then nothing.
+
+select * from dataset2 except select * from dataset1; --if identical then nothing.
+
+
+product: join
+
+select a.cid, a.fname, b.city, b.state, b.zip  -- any projection from the two tables.
+from dataset1 a 
+  inner join dataset2 b
+  on a.cid = b.cid
+
+
+-- don't do this notation.
+select *
+from dataset1 a, dataset2 b
+where a.cid = b.cid  <-- join condition
+
+
+-------------------------------------------------------------------
+-------------------------------------------------------------------
+JOINS
+-------------------------------------------------------------------
+
+CUSTOMER(cid, fname, lname, zip)
+PURCHASES(pid, cid, tim) 
+
+select zip from customer where cid=1;
+
+---get all purchases from yesterday, by anyone named Johnson.
+select b.*   -- all the purchase fields
+from customer a 
+  inner join purchases b
+  on a.cid=b.cid
+where 
+  b.tim >= cast('2022-02-06' as date) and 
+  b.tim < cast('2022-02-07' as date) and
+  a.lname='Johnson'
+
+
+INNER JOIN 
+   
+   MATCHING RECORDS HAVE TO EXIST IN BOTH TABLES.
+   
+   in a scenario of customer inner join product using(cid)
+
+   the matching "cid" has to exist in both tables:
+     if a customer did not have any purchases, they wouldn't show up in result.
+
+  -- give me all customer names with greater than 10 purchases
+  select a.fname, a.lname
+  from customer a
+    inner join purchase b
+    on a.cid=b.cid
+  group by a.cid
+  having count(*)>10 
+
+
+LEFT OUTER JOIN
+    --RIGHT OUTER JOIN
+
+  -- give me all customer names with less than 10 purchases
+  select a.fname, a.lname
+  from customer a
+    left outer join purchase b
+    on a.cid=b.cid
+  group by a.cid
+  having count(b.cid)<10 
+ 
+  --right outer join is the reverse of that... 
+  select b.fname, b.lname
+  from purchase a
+    right outer join customer b
+    on a.cid=b.cid
+  group by b.cid
+  having count(a.cid)<10 
+
+  NOTE: avoid using right outer join, it's ugly. 
+    some databases do not support right outer join, since it can easily be
+    re-written as a left outer join.
+
+
+FULL OUTER JOIN 
+
+  records may be missing from *both* left and right table.
+
+  ...comparing data... 
+  
+  select coalesce(a.tim, b.tim) as tim, a.*,b.*
+  from purchase_src1 a 
+     full outer join purchase_src2 b
+     on a.tim=b.tim
+  order by 1;
+
+CROSS JOIN 
+
+  uncoditional join with everything matched to everything.
+
+  -- find purchases by any two customers that occured within 1 
+  second of each other.
+
+select *
+from purchase a
+  cross join purchase b
+where extract(second from abs(a.tim - b.tim)) <= 1
+
+--this should be rewritten as: 
+select *
+from purchase a
+  inner join purchase b
+  on extract(second from abs(a.tim - b.tim)) <= 1   --this is a join condition
+--BUT: internally, most databases will do cross join anyway.
+--also, many databases do not allow non-equality join conditions 
+
+  NOTE: cross joins are not very useful, as they're very slow for anything "big". 
+
+"NATURAL" JOINS; 
+  NATURAL INNER JOIN 
+  NATURAL LEFT OUTER JOIN 
+  NATURAL FULL OUTER JOIN
+
+in natural joins you don't specify join condition: the join is automatic on all
+the columns that are named the same; same named columns.
+
+
+do not use natural joins in "production" environments.
+
+... customer(...cid, . )
+... purchase( ... cid, ... as_of) 
+
+... 2 years later, someone, somewhere, adds "as_of" column to customer,
+(to support changing customer state)
+
+suddenly, all "natural inner joins" between customer and purchase will SILENTLY stop working.
+
+select ... from customer a inner join purchase b on a.cid=b.cid; 
+select ... from customer a natural inner join purchase b;
+
+don't use: select *
+don't use: natural joins
+don't use: insert
+don't use: update/delete
+
+create table customer(cid bigint,fname varchar(30),lname  varchar(30),email  varchar(30));
+insert into customer(cid,fname,lname,email) values (1,'John','Doe','john@gmail.com');
+insert into customer values (2,'Jane','Doe','jane@gmail.com');
+insert into customer values (3,'Bob','Doe','bob@gmail.com');
+insert into customer values (4,'Bill','Doe','bill@gmail.com');
+insert into customer values (5,'Ryan','Doe','ryan@gmail.com');
+
+create table product(prid bigint, name varchar(100),listprice decimal(18,8));
+insert into product values (1,'CPU',100.0);
+insert into product values (2,'HD',200.0);
+insert into product values (3,'CASE',50.0);
+insert into product values (4,'SCREEN',400.0);
+insert into product values (5,'KEYBOARD',20.0);
+insert into product values (6,'MOUSE',20.0);
+insert into product values (7,'TESLA',100000.0);
+insert into product values (8,'SPACEHOTEL',50000000.0);
+
+
+
+create table purchase(pid bigint, cid bigint, tim timestamp);
+create table purchase_detail(pdid bigint, pid bigint, prid bigint, qty int, price decimal(18,8));
+
+
+create sequence purchase_seq;
+create sequence purchase_detail_seq;
+
+insert into purchase values (nextval('purchase_seq'),1, now());
+insert into purchase_detail values (nextval('purchase_detail_seq'), currval('purchase_seq'), 3, 2, 45.0);
+
+insert into purchase values (nextval('purchase_seq'),2, now());
+insert into purchase_detail values (nextval('purchase_detail_seq'), currval('purchase_seq'), 4, 1, 400.0);
+
+insert into purchase values (nextval('purchase_seq'),4, now());
+insert into purchase_detail values (nextval('purchase_detail_seq'), currval('purchase_seq'), 5, 1, 10.0);
+insert into purchase_detail values (nextval('purchase_detail_seq'), currval('purchase_seq'), 6, 1, 7.0);
+
+
+insert into purchase values (nextval('purchase_seq'),2, now());
+insert into purchase_detail values (nextval('purchase_detail_seq'), currval('purchase_seq'), 7, 1, 95000.0);
+
+insert into purchase values (nextval('purchase_seq'),4, now());
+insert into purchase_detail values (nextval('purchase_detail_seq'), currval('purchase_seq'), 8, 1, 50000000.0);
+
+
+----
+-- find names of customers who purchased more than 1 item.
+
+select a.fname, a.lname, count(*), string_agg(d.name,',' order by d.name)
+from customer a
+  inner join purchase b
+  on a.cid=b.cid
+  inner join purchase_detail c
+  on b.pid=c.pid
+  inner join product d
+  on c.prid=d.prid
+group by a.fname, a.lname
+having count(*) > 1;
+
+
+
+
+-- find names of customers who purchased less than 2 items.
+
+select a.fname, a.lname, count(c.pdid)
+from customer a
+  left outer join purchase b
+  on a.cid=b.cid
+  left outer join purchase_detail c
+  on b.pid=c.pid
+group by a.fname, a.lname
+having count(c.pdid) < 2;
+
+ fname | lname | count 
+-------+-------+-------
+ Ryan  | Doe   |     0
+ Bob   | Doe   |     0
+ John  | Doe   |     1
+ Jane  | Doe   |     1
+(4 rows)
+
+---
+---
+
+select *
+from customer a
+  inner join purchase b
+  on a.cid=b.cid
+  inner join purchase_detail c
+  on b.pid=c.pid
+  inner join product d
+  on c.prid=d.prid
+where d.listprice > c.price
+;
+
+---find price per purchase for john doe.
+
+select a.cid, a.fname, b.pid, sum( c.qty * c.price ) tot, 
+  string_agg(d.name,',' order by d.name)
+from customer a
+  inner join purchase b
+  on a.cid=b.cid
+  inner join purchase_detail c
+  on b.pid=c.pid
+  inner join product d
+  on c.prid=d.prid
+--where a.fname='John' and lname='Doe'
+group by a.cid, a.fname, b.pid
+;
+
+---find outlier purchases, those that are >3sd in value.
+--- when a problem requires multiple steps, like above, use:
+---  CTE (common table expression)
+
+with purchase_values as (  --find value of each purchase
+  select pid, sum( qty * price ) tot
+  from purchase_detail
+  group by pid
+),
+purchase_stats as (   --find stats on purchase values
+   select avg(tot) av, stddev(tot) sd
+   from purchase_values
+)
+select * 
+from purchase_values a
+ cross join purchase_stats b
+where a.tot > b.av + b.sd*1
+;
+
+
+---TODO:
+---which customer had the most purchases?
+---which is the most popular product (purchased the most)
+---which is the most popular product (purcahsed by most people)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
