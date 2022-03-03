@@ -43,3 +43,10 @@ For deployent of the website I am currently using Netlify. Netlify is your go to
 - Chris.samuel68@bcmail.cuny.edu 
 - encrpytable@pm.me (For those who like anonymity please use a protonmail email so you can send encrypted emails ) 
 
+### Week 1
+### Week 2
+### Week 3
+
+https://www.allmath.com/twos-complement.php
+
+### Week 4

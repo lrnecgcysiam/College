@@ -11,11 +11,11 @@ eleventyNavigation:
 ### Week 0
 
 [Lecture Recording](https://youtu.be/MRA73wR9hgI)
-[Homework | Download](http://www.sci.brooklyn.cuny.edu/~zhou/teaching/cis7124/hw1.pdf)
-[Homework | Completed]( https://www.dropbox.com/sh/nqj1tnkdbgelxhb/AABB_NsT2RN0_IikjI_ejkBMa?dl=0)
+[Homework | Download](http://www.sci.brooklyn.cuny.edu/~zhou/teaching/cis7512/hw1.pdf)
+[Homework | Completed] (https://www.dropbox.com/sh/nqj1tnkdbgelxhb/AABB_NsT2RN0_IikjI_ejkBMa?dl=0)
 [Youtube Video Explainer Video]()
 
-***Review***
+***Review***  
 
 I just completed this simple site with a open source project 
 called 11ty.dev. (Eleventy) It uses NodejS and Nunjucks Templating engine to rapidly put together websites, for blogging, documentation, and more. 
@@ -35,3 +35,6 @@ For deployent of the website I am currently using Netlify. Netlify is your go to
 [Homework | Download]()
 [Homework | Completed]( https://www.dropbox.com/sh/nqj1tnkdbgelxhb/AABB_NsT2RN0_IikjI_ejkBMa?dl=0)
 [Youtube Video Explainer Video]()
+
+
+

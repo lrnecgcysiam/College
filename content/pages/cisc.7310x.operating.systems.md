@@ -8,8 +8,42 @@ eleventyNavigation:
   title: CISC 7310X Operating Systems
 ---
 
-### Week 0
+[Course Website](https://huichen-cs.github.io/course/CISC7310X/22SP/tutorial/bootstrap1.html)
 
+### Week 0 `02/03/22`
+
+[Lecture Recording]()
+[Homework | Download]()
+[Homework | Completed]()
+[Youtube Video Explainer Video]()
+
+
+### Week 1
+`02/10/22`
+[Lecture Recording]()
+[Homework | Download]()
+[Homework | Completed]()
+[Youtube Video Explainer Video]()
+
+
+### Week 2
+`02/24/22`
+[Lecture Recording]()
+[Homework | Download]()
+[Homework | Completed]()
+[Youtube Video Explainer Video]()
+
+
+### Week 3
+`03/03/22`
+[Lecture Recording]()
+[Homework | Download]()
+[Homework | Completed]()
+[Youtube Video Explainer Video]()
+
+
+### Week 4
+`02/10/22`
 [Lecture Recording]()
 [Homework | Download]()
 [Homework | Completed]()
