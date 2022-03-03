@@ -43,7 +43,7 @@ eleventyNavigation:
 
 
 ### Week 4
-{% highlight %}
+
 [Lecture Recording]()
 [Homework | Download]()
 [Homework | Completed]()
