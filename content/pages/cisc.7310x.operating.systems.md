@@ -19,7 +19,6 @@ eleventyNavigation:
 
 
 ### Week 1
-`02/10/22`
 [Lecture Recording]()
 [Homework | Download]()
 [Homework | Completed]()
@@ -27,7 +26,6 @@ eleventyNavigation:
 
 
 ### Week 2
-`02/24/22`
 [Lecture Recording]()
 [Homework | Download]()
 [Homework | Completed]()
@@ -35,7 +33,6 @@ eleventyNavigation:
 
 
 ### Week 3
-`03/03/22`
 [Lecture Recording]()
 [Homework | Download]()
 [Homework | Completed]()
@@ -43,7 +40,6 @@ eleventyNavigation:
 
 
 ### Week 4
-`02/10/22`
 [Lecture Recording]()
 [Homework | Download]()
 [Homework | Completed]()
