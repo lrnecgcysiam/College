@@ -19,7 +19,7 @@ eleventyNavigation:
 
 
 ### Week 1
-`02/10/22`
+``` code  ```
 [Lecture Recording]()
 [Homework | Download]()
 [Homework | Completed]()
