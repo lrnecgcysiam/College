@@ -10,7 +10,7 @@ eleventyNavigation:
 
 [Course Website](https://huichen-cs.github.io/course/CISC7310X/22SP/tutorial/bootstrap1.html)
 
-### Week 0 `02/03/22`
+### Week 0
 
 [Lecture Recording]()
 [Homework | Download]()
