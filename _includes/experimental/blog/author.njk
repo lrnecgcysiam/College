@@ -16,7 +16,7 @@ renderData:
 
 <section>
 	{% for post in collections.authors[author] | reverse %}
-		<article{% if post.page.url == url %} data-current="current item"{% endif %}>
+		<article {% if post.page.url == url %} data-current="current item"{% endif %}>
 			<h3>
 				<a href="{{ post.page.url | url }}">
 					{% if post.title %}
