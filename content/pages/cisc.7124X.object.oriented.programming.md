@@ -8,6 +8,16 @@ eleventyNavigation:
   title: CISC 7124X Object Oriented Programming
 ---
 
+Here is the zoom room where we'll be meeting for the CISC 7124 class, starting tomorrow evening:
+
+https://us02web.zoom.us/j/88035602667?pwd=NGRtR1JUcTlPZlpEZTFCVUpxYUpldz09
+
+You can find the basic information about the course at:
+
+http://www.sci.brooklyn.cuny.edu/~zhou/teaching/cis7124/
+
+
+
 ### Week 0
 
 [Lecture Recording](https://youtu.be/MRA73wR9hgI)
