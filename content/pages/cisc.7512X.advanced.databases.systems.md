@@ -45,7 +45,7 @@ For deployent of the website I am currently using Netlify. Netlify is your go to
 
 
 ### Week  4 
-[Lecture Recording](https://youtu.be/MRA73wR9hgI)
+[Lecture Recording](https://youtu.be/cRM6CCJv_Nw)
 [Homework | Download](http://theparticle.com/cs/bc/dbsys/homeworks.html)
 [Homework | Completed]()
 [Youtube Video Explainer Video]()
