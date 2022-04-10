@@ -6,17 +6,6 @@ Homework 5 Binary Treees BTNode
 
  Write each of the following functions on a binary tree with a given root of the type BTNode.
 
-    Return the in-order traversal of a tree as a list.
-    Test if a binary tree is symmetric (a binary tree is symmetric if rotating it about the vertical bar through the root for 180 degrees gives the same tree).
-    Return the maximum path sum (the sum of the path from the root to a leaf is the sum of values in the nodes on the path).
-    Test if a binary tree is a search tree.
-    Test if a given value occurs in a binary search tree.
-    Insert a value into a binary search tree such that the resulting tree remains a search tree. 
-
-
-
-  
-      
 class BTNode<T> {
     T data;
     BTNode<T> left, right;
@@ -26,11 +15,112 @@ class BTNode<T> {
         left = null;
         right = null;
     }
-   
     public BTNode(T data, BTNode<T> left, BTNode<T> right){
         this.data = data;
         this.left = left;
         this.right = right;
     }
+
+    ### 1. Return the in-order traversal of a tree as a list.
+
+    public List<List<Integer>> inOrderTraversal(T data) {
+        LinkedList<List<Integer>> result = new LinkedList<>();  // LinkedList()
+        if(root == null) return result;
+        
+        Queue<T> queue = new LinkedList<>(); // LinkedList()
+        queue.add(root);
+        
+        while(!queue.isEmpty()){
+            int size = queue.size();
+            List<Integer> arr = new ArrayList<>(size); // ArrayList(size)
+            
+            for(int i = 0; i < size; i++) {
+                T curr = queue.remove();
+                arr.add(curr.val);
+                if(curr.left != null) queue.add(curr.left);
+                if(curr.right != null) queue.add(curr.right);
+            }
+            
+            result.addFirst(arr);
+        }
+        return result;
+
+        if (root == null) {
+            return false;
+        } else if (root.right == null && root.left == null) {
+            return true;
+        } else {
+            return isSymmetric(root.left, root.right);
+        }
+    }
+    ### 2.  Test if a binary tree is symmetric (a binary tree is symmetric if rotating it about the vertical bar through the root for 180 degrees gives the same tree).
+    
+    public boolean isSymmetric(T p, T q) {
+        if (p == null && q == null) {
+            return true;
+        } else if (p == null || q == null) {
+            return false;
+        } else if (p.val != q.val) {
+            return false;
+        } else {
+            return (isSymmetric(p.left, q.right) && isSymmetric(p.right, q.left));
+   
+        ### 4.  Test if a binary tree is a search tree.
+        public boolean isValidBST(TreeNode root) {
+            return isValidBST(root,Long.MIN_VALUE,Long.MAX_VALUE);
+        }
+    
+        public boolean isValidBST(TreeNode root,long min,long max){
+            if(root==null) return true;
+            if(root.val<=min || root.val>=max) return false;
+            return isValidBST(root.left,min,root.val) && isValidBST(root.right,root.val,max);
+        }
+
+    ### 3 Return the maximum path sum
+    (the sum of the path from the root to a leaf
+     is the sum of values
+     in the nodes on the path).
+  
+    public int maxPathSum(T root) {
+        int maxValue[]=new int[1];
+        maxValue[0]=Integer.MIN_VALUE;
+        maxPath(root,maxValue);
+        return maxValue[0];
+    }
+    private int maxPath(T root,int maxValue[]) {
+        if(root==null){
+            return 0;
+        }
+        int left=Math.max(0,maxPath(root.left,maxValue));
+        int right=Math.max(0,maxPath(root.right,maxValue));
+        maxValue[0]=Math.max(maxValue[0],left+right+root.val);
+        return Math.max(left,right) + root.val;
+    }
+
+    ### Insert a value into a binary search tree such that 
+    ### the resulting tree remains a search tree.     
+    
+    public TreeNode insertValidValueIntoBST(TreeNode root, int val) {
+        if(root==null)return new TreeNode(val);
+          TreeNode curr=root;
+          
+          while(true){
+              if(curr.val<val){
+                  if(curr.right!=null) curr=curr.right;
+                  else{
+                     curr.right=new TreeNode(val);
+                      break;
+                  }
+              }
+              else{
+                 if(curr.left!=null) curr=curr.left;
+                  else{
+                      curr.left=new TreeNode(val);
+                      break;
+                  }
+              }
+          }
+        return root;  
+      }
 }
   
