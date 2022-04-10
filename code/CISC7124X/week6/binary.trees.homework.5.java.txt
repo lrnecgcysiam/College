@@ -1,0 +1,36 @@
+Chris Samuel
+24141468
+CISC 7124X
+Homework 5 Binary Treees BTNode
+
+
+ Write each of the following functions on a binary tree with a given root of the type BTNode.
+
+    Return the in-order traversal of a tree as a list.
+    Test if a binary tree is symmetric (a binary tree is symmetric if rotating it about the vertical bar through the root for 180 degrees gives the same tree).
+    Return the maximum path sum (the sum of the path from the root to a leaf is the sum of values in the nodes on the path).
+    Test if a binary tree is a search tree.
+    Test if a given value occurs in a binary search tree.
+    Insert a value into a binary search tree such that the resulting tree remains a search tree. 
+
+
+
+  
+      
+class BTNode<T> {
+    T data;
+    BTNode<T> left, right;
+   
+    public BTNode(T data){
+        this.data = data;
+        left = null;
+        right = null;
+    }
+   
+    public BTNode(T data, BTNode<T> left, BTNode<T> right){
+        this.data = data;
+        this.left = left;
+        this.right = right;
+    }
+}
+  
