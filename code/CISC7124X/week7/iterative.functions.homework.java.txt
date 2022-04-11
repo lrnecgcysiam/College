@@ -1,0 +1,68 @@
+Chris Samuel
+24141468
+Homework 6 Iterative Functions
+
+
+#### static <T> leftMost(BTNode<T> root): Returns 
+### the value stored in the left-most node. 
+  
+class BTNode<T> {
+    T data;
+    BTNode<T> left, right;
+   
+    public BTNode(T data){
+        this.data = data;
+        left = null;
+        right = null;
+    }
+   
+    public BTNode(T data, BTNode<T> left, BTNode<T> right){
+        this.data = data;
+        this.left = left;
+        this.right = right;
+    }
+
+    ### 
+    public int leftMost(BTNode root) {
+        if(root == null){
+            return -1;
+        }
+        Queue<BTNode> q = new LinkedList<>();
+        Stack<BTNode> stack = new Stack<>();
+        q.add(root);
+        while(!q.isEmpty()){
+            BTNode top = q.remove();
+            if(top.right != null){
+                q.add(top.right);
+            }
+            if(top.left != null){
+                q.add(top.left);
+            }
+            stack.push(top);
+        }
+        return stack.pop().val;
+    }
+
+
+    #### Returns the pre-order traversal of a tree as a list. 
+    public static List<T> preorderTraversal(BTNode root) {
+        ArrayList<T> list = new ArrayList<T>();
+        traverse(root, list);
+        return list;
+    }
+    
+    public void traverse(BTNode node, ArrayList<T> list) {
+        if(node == null) {
+            return;
+        }
+        
+        list.add(node.val);
+        traverse(node.left, list);
+        traverse(node.right, list);
+        
+    }
+
+### Returns the values in layer n of a tree as 
+### a list. Assume that the root has layer 0.
+public static <T> List<T> layer(BTNode<T> root, int n): 
+}
