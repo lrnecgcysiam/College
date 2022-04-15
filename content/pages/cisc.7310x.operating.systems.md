@@ -46,6 +46,48 @@ eleventyNavigation:
 [Youtube Video Explainer Video]()
 
 
+### Week 5
+
+[Lecture Recording]()
+[Homework | Download]()
+[Homework | Completed]()
+[Youtube Video Explainer Video]()
+
+
+### Week 6
+[Lecture Recording]()
+[Homework | Download]()
+[Homework | Completed]()
+[Youtube Video Explainer Video]()
+
+
+### Week 7
+[Lecture Recording]()
+[Homework | Download]()
+[Homework | Completed]()
+[Youtube Video Explainer Video]()
+
+
+### Week 8
+[Lecture Recording]()
+[Homework | Download]()
+[Homework | Completed]()
+[Youtube Video Explainer Video]()
+
+
+### Week 9
+[Lecture Recording]()
+[Homework | Download]()
+[Homework | Completed]()
+[Youtube Video Explainer Video]()
+
+
+### Week 10
+[Lecture Recording]()
+[Homework | Download]()
+[Homework | Completed]()
+[Youtube Video Explainer Video]()
+
 
 
 ***Review***

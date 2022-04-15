@@ -27,7 +27,7 @@ class BTNode<T> {
         if(root == null){
             return -1;
         }
-        Queue<BTNode> q = new LinkedList<>();
+        Queue<BTNode> q = new List<>();
         Stack<BTNode> stack = new Stack<>();
         q.add(root);
         while(!q.isEmpty()){
@@ -64,5 +64,250 @@ class BTNode<T> {
 
 ### Returns the values in layer n of a tree as 
 ### a list. Assume that the root has layer 0.
+
 public static <T> List<T> layer(BTNode<T> root, int n): 
+ int getLevelUtil(BTNode node, int data, int level)
+    {
+        if (node == null)
+            return 0;
+ 
+        if (node.data == data)
+            return level;
+ 
+        int downlevel
+            = getLevelUtil(node.left, data, level + 1);
+        if (downlevel != 0)
+            return downlevel;
+ 
+        downlevel
+            = getLevelUtil(node.right, data, level + 1);
+        return downlevel;
+    }
+ 
+    /* Returns level of given data value */
+    int getLevel(Node node, int data)
+    {
+        return getLevelUtil(node, data, 1);
+    }
+ 
+    /* Driver code */
+    public static void main(String[] args)
+    {
+        BinaryTree tree = new BinaryTree();
+ 
+        /* Constructing tree given in the above figure */
+        tree.root = new Node(3);
+        tree.root.left = new Node(2);
+        tree.root.right = new Node(5);
+        tree.root.left.left = new Node(1);
+        tree.root.left.right = new Node(4);
+        for (int x = 1; x <= 5; x++)
+        {
+            int level = tree.getLevel(tree.root, x);
+            if (level != 0)
+                System.out.println(
+                    "Level of " + x + " is "
+                    + tree.getLevel(tree.root, x));
+            else
+                System.out.println(
+                    x + " is not present in tree");
+        }
+    }
+}
+
+
+
+// static <T> List<T> bfsOrder(BTNode<T> root): Returns the breadth-first traversal of a tree as a list. 
+
+import java.io.*;
+import java.util.*;
+ 
+// This class represents a directed bfsOrder using adjacency list
+// representation
+class bfsOrder
+{
+    private int V;   // No. of vertices
+    private List<T> adj[]; //Adjacency Lists
+ 
+    // Constructor
+    bfsOrder(int v)
+    {
+        V = v;
+        adj = new List[v];
+        for (int i=0; i<v; ++i)
+            adj[i] = new List();
+    }
+ 
+    // Function to add an edge into the bfsOrder
+    void addEdge(int v,int w)
+    {
+        adj[v].add(w);
+    }
+ 
+    // prints BFS traversal from a given source s
+    void BFS(int s)
+    {
+        // Mark all the vertices as not visited(By default
+        // set as false)
+        boolean visited[] = new boolean[V];
+ 
+        // Create a queue for BFS
+        List<Integer> queue = new List<Integer>();
+ 
+        // Mark the current node as visited and enqueue it
+        visited[s]=true;
+        queue.add(s);
+ 
+        while (queue.size() != 0)
+        {
+            // Dequeue a vertex from queue and print it
+            s = queue.poll();
+            System.out.print(s+" ");
+ 
+            // Get all adjacent vertices of the dequeued vertex s
+            // If a adjacent has not been visited, then mark it
+            // visited and enqueue it
+            Iterator<Integer> i = adj[s].listIterator();
+            while (i.hasNext())
+            {
+                int n = i.next();
+                if (!visited[n])
+                {
+                    visited[n] = true;
+                    queue.add(n);
+                }
+            }
+        }
+    }
+ 
+    // Driver method to
+    public static void main(String args[])
+    {
+        bfsOrder g = new bfsOrder(4);
+ 
+        g.addEdge(0, 1);
+        g.addEdge(0, 2);
+        g.addEdge(1, 2);
+        g.addEdge(2, 0);
+        g.addEdge(2, 3);
+        g.addEdge(3, 3);
+ 
+        System.out.println("Following is Breadth First Traversal "+
+                           "(starting from vertex 2)");
+ 
+        g.BFS(2);
+    }
+}
+// This 
+
+
+
+
+// static <T extends Comparable<T>> boolean occurs(BTNode<T> root, T elm): Tests if a given value occurs in a binary search tree.
+// static boolean wellFormed(String s): Tests if a given string of "([{}])" is properly well formed.
+// Binary Search Tree implementation
+class BST<E extends Comparable<E>> {
+    private BSTNode<E> root; // Root of the BST
+    private int occurs; // Number of nodes in the BST
+  
+    // constructor
+    BST() { root = null; occurs = 0; }
+  
+    // Reinitialize tree
+    public void clear() { root = null; occurs = 0; }
+  
+    // Insert a record into the tree.
+    // Records can be anything, but they must be Comparable
+    // e: The record to insert.
+    public void insert(E e) {
+      root = inserthelp(root, e);
+      occurs++;
+    }
+  
+    // Remove a record from the tree
+    // key: The key value of record to remove
+    // Returns the record removed, null if there is none.
+    public E remove(E key) {
+      E temp = findhelp(root, key); // First find it
+      if (temp != null) {
+        root = removehelp(root, key); // Now remove it
+        occurs--;
+      }
+      return temp;
+    }
+  
+    // Return the record with key value k, null if none exists
+    // key: The key value to find
+    public E find(E key) { return findhelp(root, key); }
+  
+    // Return the number of records in the dictionary
+    public int size() { return occurs; }
+
+    // static boolean wellFormed(String s): Tests if a given string of "([{}])" is properly well formed. 
+
+import java.util.*;
+ 
+public class WellFormed {
+ 
+    // function to check if brackets are balanced
+    static boolean wellFormed(String s)
+    {
+        // Using ArrayDeque is faster than using Stack class
+        Deque<Character> stack
+            = new ArrayDeque<Character>();
+ 
+        // Traversing the expression
+        for (int i = 0; i < s.length(); i++)
+        {
+            char x = s.charAt(i);
+ 
+            if (x == '(' || x == '[' || x == '{')
+            {
+                // Push the element in the stack
+                stack.push(x);
+                continue;
+            }
+ 
+            // If current character is not opening
+            // bracket, then it must be closing. So stack
+            // cannot be empty at this point.
+            if (stack.isEmpty())
+                return false;
+            char check;
+            switch (x) {
+            case ')':
+                check = stack.pop();
+                if (check == '{' || check == '[')
+                    return false;
+                break;
+ 
+            case '}':
+                check = stack.pop();
+                if (check == '(' || check == '[')
+                    return false;
+                break;
+ 
+            case ']':
+                check = stack.pop();
+                if (check == '(' || check == '{')
+                    return false;
+                break;
+            }
+        }
+ 
+        // Check Empty Stack
+        return (stack.isEmpty());
+    }
+ 
+    // Driver code
+    public static void main(String[] args)
+    {
+        String s = "([{}])";
+ 
+        // Function call
+        if (wellFormed(s))
+            System.out.println("Balanced ");
+        else
+            System.out.println("Not Balanced ");
+    }
 }
