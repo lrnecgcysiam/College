@@ -41,11 +41,65 @@ For deployent of the website I am currently using Netlify. Netlify is your go to
 
 
 
-## Week 3 (President's Day No Classes)
+## Week 2
 
 
-### Week  4 
+### Week  3 
 [Lecture Recording](https://youtu.be/cRM6CCJv_Nw)
 [Homework | Download](http://theparticle.com/cs/bc/dbsys/homeworks.html)
 [Homework | Completed]()
 [Youtube Video Explainer Video]()
+
+
+## Week  4
+[Lecture Recording]()
+[Homework | Download]()
+[Homework | Completed]()
+[Youtube Video Explainer Video]()
+
+### Week  5
+[Lecture Recording]()
+[Homework | Download]()
+[Homework | Completed]()
+[Youtube Video Explainer Video]()
+
+## Week  6
+[Lecture Recording]()
+[Homework | Download]()
+[Homework | Completed]()
+[Youtube Video Explainer Video]()
+
+### Week  7
+[Lecture Recording]()
+[Homework | Download]()
+[Homework | Completed]()
+[Youtube Video Explainer Video]()
+
+
+## Week  8
+[Lecture Recording]()
+[Homework | Download]()
+[Homework | Completed]()
+[Youtube Video Explainer Video]()
+
+### Week  9
+[Lecture Recording]()
+[Homework | Download]()
+[Homework | Completed]()
+[Youtube Video Explainer Video]()
+
+## Week  10
+[Lecture Recording]()
+[Homework | Download]()
+[Homework | Completed]()
+[Youtube Video Explainer Video]()
+
+### Week  11
+[Lecture Recording]()
+[Homework | Download]()
+[Homework | Completed]()
+[Youtube Video Explainer Video]()
+
+## Week  12 (Spring Break)
+
+
