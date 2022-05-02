@@ -1,3 +1,5 @@
+--- Chris Samuel
+--- 24141468
 --- CISC 7512X Homework #6 Below is a schema for an HR Database
 --- employee( empid, fname, lname, managerid. departmentid, employee_rank)
 
@@ -26,15 +28,10 @@ insert into employee(empid,fname, lname,managerid, departmentid, employee_rank)
 values(5, 'Rudolph', 'Ushinomiya', 100, 4001, 'VP');
 insert into employee(empid,fname, lname,managerid, departmentid, employee_rank)
 values(6, 'Natsuhi', 'Ushinomiya', 100, 4001, 'SVP');
-
-
 insert into employee(empid,fname, lname,managerid, departmentid, employee_rank)
 values(6, 'Beatrice', '', 129, 4001, 'SVP');
-
 insert into employee(empid,fname, lname,managerid, departmentid, employee_rank)
 values(6, 'Bernkastel', '', 999, 4001, 'SVP');
-
-
 insert into employee(empid,fname, lname,managerid, departmentid, employee_rank)
 values(42, 'Chris', 'Samuel', 109, 4001, 'SVP');
 
@@ -44,3 +41,19 @@ select * from employee where empid=42;
 
 -- 2. Who (empid,fanme,lname) reports directly to employee 42?
 select * from employee where empid=42 and  departmentid=4001 and employee_rank='VP' OR employee_rank='staff';
+
+
+-- 3. Who ( empid, fname, lname) reports (directly or indirectly)
+select * from employee where departmentid=4001 and 
+                    employee_rank='CEO' OR
+                     employee_rank='SVP' OR
+                     employee_rank='VP';
+
+-- 4. Count of all employees who report to emploee 42?
+select count(*) from employees where departmentid=4001 AND employee_rank='VP' OR employee_rank='staff';
+
+-- Who does employee 42 reports to (directly or indirectly)?
+select * from employee where empid=42 and  departmentid=4001 and employee_rank='CEO';
+
+
+--
