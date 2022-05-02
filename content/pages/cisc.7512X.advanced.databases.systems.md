@@ -8,6 +8,8 @@ eleventyNavigation:
   title: CISC 7512X Advanced Databases 2
 ---
 
+[Course Official Website](http://theparticle.com/cs/bc/dbsys/index.html)
+
 ## Week 0
 
 [Lecture Recording (Part 1) ](https://youtu.be/BL4XaR785_s) 
@@ -42,6 +44,7 @@ For deployent of the website I am currently using Netlify. Netlify is your go to
 
 
 ## Week 2
+
 
 
 ### Week  3 
