@@ -106,3 +106,25 @@ For deployent of the website I am currently using Netlify. Netlify is your go to
 ## Week  12 (Spring Break)
 
 
+
+### Week  13
+[Lecture Recording]()
+[Homework | Download]()
+[Homework | Completed]()
+[Youtube Video Explainer Video]()
+
+
+### Week  14
+[Lecture Recording]()
+[Homework | Download]()
+[Homework | Completed]()
+[Youtube Video Explainer Video]()
+
+
+### Week  15 (Final Review)
+[Lecture Recording]()
+[Homework | Download]()
+[Homework | Completed]()
+[Youtube Video Explainer Video]()
+
+
